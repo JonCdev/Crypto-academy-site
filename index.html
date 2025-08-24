@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Academy - Learn Bitcoin & Cryptocurrency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(240, 147, 251, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            margin: 0 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 60px 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #34495e;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* Use Cases Grid */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .use-case {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f5576c;
+        }
+
+        .use-case h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .use-case p {
+            font-size: 1rem;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Key Points List */
+        .key-points {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .key-points h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .key-points li:last-child {
+            border-bottom: none;
+        }
+
+        /* Sub-sections for DeFi */
+        .sub-section {
+            background: linear-gradient(135deg, #e3ffe7 0%, #d9e7ff 100%);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .sub-section h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .sub-section p {
+            margin-bottom: 1rem;
+        }
+
+        .benefits-list {
+            margin-top: 1rem;
+        }
+
+        .benefits-list h5 {
+            color: #34495e;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .benefits-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f5576c;
+            font-weight: bold;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Interactive Elements */
+        .interactive-demo {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .demo-button {
+            background: #fff;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover,
+        .demo-button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .demo-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            min-height: 100px;
+        }
+
+        /* Warning Boxes */
+        .warning-box {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-left: 5px solid #e74c3c;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 5px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .demo-buttons {
+                flex-direction: column;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🚀 Crypto Academy</a>
+            <ul class="nav-links">
+                <li><a href="#bitcoin">Bitcoin</a></li>
+                <li><a href="#stablecoins">Stablecoins</a></li>
+                <li><a href="#remittances">Remittances</a></li>
+                <li><a href="#defi">DeFi</a></li>
+                <li><a href="#custody">Self-Custody</a></li>
+                <li><a href="#exchanges">Exchanges</a></li>
+                <li><a href="#security">Security</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Master Cryptocurrency</h1>
+            <p>Learn Bitcoin, DeFi, stablecoins, and smart trading practices in the digital economy</p>
+            <a href="#bitcoin" class="cta-button">Start Learning</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <main class="main-content">
+            <section id="bitcoin" class="section">
+                <h2>Understanding Bitcoin & Cryptocurrency</h2>
+                
+                <h3>What is Bitcoin?</h3>
+                <p>Bitcoin is the world's first cryptocurrency, created in 2009 by an anonymous person or group using the pseudonym Satoshi Nakamoto. It's a decentralized digital currency that operates on a peer-to-peer network without the need for central authorities like banks or governments.</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>🔗 Blockchain Technology</h4>
+                        <p>Bitcoin operates on a blockchain - a distributed ledger that records all transactions across a network of computers, ensuring transparency and security.</p>
+                    </div>
+                    <div class="card">
+                        <h4>💰 Digital Scarcity</h4>
+                        <p>Only 21 million Bitcoin will ever exist, making it inherently scarce and potentially valuable as a store of value, similar to digital gold.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌍 Decentralization</h4>
+                        <p>No single entity controls Bitcoin. It's maintained by thousands of computers worldwide, making it resistant to censorship and control.</p>
+                    </div>
+                </div>
+
+                <h3>How Cryptocurrency Works</h3>
+                <p>Cryptocurrencies use cryptographic techniques to secure transactions and control the creation of new units. Each transaction is verified by network participants and recorded on the blockchain, creating an immutable record of all activity.</p>
+
+                <div class="info-box">
+                    <strong>Key Insight:</strong> Think of cryptocurrency as digital cash that you can send directly to anyone in the world without needing a bank as an intermediary.
+                </div>
+            </section>
+
+            <section id="stablecoins" class="section">
+                <h2>Stablecoins: Digital Stability</h2>
+                
+                <p>Stablecoins are cryptocurrencies designed to maintain a stable value by being pegged to external references such as fiat currencies, commodities, or algorithmic mechanisms. They bridge the gap between traditional finance and digital assets, offering the benefits of blockchain technology while minimizing price volatility.</p>
+
+                <div class="key-points">
+                    <h4>Key Features of Stablecoins</h4>
+                    <ul>
+                        <li>Price stability through various pegging mechanisms (fiat-collateralized, crypto-collateralized, or algorithmic)</li>
+                        <li>Faster and cheaper cross-border transactions compared to traditional banking systems</li>
+                        <li>24/7 availability and programmable money features through smart contracts</li>
+                        <li>Transparency and auditability of reserves (for properly managed stablecoins)</li>
+                        <li>Gateway for entering and exiting the broader cryptocurrency ecosystem</li>
+                    </ul>
+                </div>
+
+                <h3>Real-World Applications</h3>
+                <div class="use-cases-grid">
+                    <div class="use-case">
+                        <h5>💳 Digital Payments</h5>
+                        <p>E-commerce transactions without volatility risk, making them ideal for merchant adoption</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🛡️ Inflation Protection</h5>
+                        <p>Preserving purchasing power in countries with high inflation or currency instability</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>📊 Trading Pairs</h5>
+                        <p>Used on cryptocurrency exchanges for portfolio management and trading</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🌍 International Transfers</h5>
+                        <p>Remittances to family members abroad with lower fees than traditional services</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>💎 DeFi Yield</h5>
+                        <p>Earning yield through DeFi protocols while maintaining stable value exposure</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>Interactive Demo: Types of Stablecoins</h4>
+                    <div class="demo-buttons">
+                        <button class="demo-button active" onclick="showStablecoinDemo('fiat')">Fiat-Backed</button>
+                        <button class="demo-button" onclick="showStablecoinDemo('crypto')">Crypto-Backed</button>
+                        <button class="demo-button" onclick="showStablecoinDemo('algorithmic')">Algorithmic</button>
+                    </div>
+                    <div class="demo-content" id="stablecoin-demo">
+                        <strong>Fiat-Backed Stablecoins:</strong> Backed 1:1 by traditional currencies like USD. Examples: USDC, USDT. Most stable but requires trust in the issuing company's reserves.
+                    </div>
+                </div>
+            </section>
+
+            <section id="remittances" class="section">
+                <h2>Cross-border Transactions and Remittances</h2>
+
+                <p>Cryptocurrency enables seamless international money transfers by eliminating traditional banking intermediaries and reducing settlement times from days to minutes. This technology is particularly transformative for remittances, providing financial inclusion to unbanked populations and significantly lowering transfer costs.</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>⚡ Instant Settlement</h4>
+                        <p>Near-instantaneous settlement compared to traditional wire transfers that can take 3-5 business days</p>
+                    </div>
+                    <div class="card">
+                        <h4>💸 Lower Fees</h4>
+                        <p>Dramatically reduced fees, often 90% lower than traditional money transfer services</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌐 24/7 Availability</h4>
+                        <p>No banking hours or holiday restrictions - send money anytime, anywhere</p>
+                    </div>
+                    <div class="card">
+                        <h4>📱 Financial Inclusion</h4>
+                        <p>Enhanced access for unbanked populations with smartphone access</p>
+                    </div>
+                </div>
+
+                <h3>Traditional vs Crypto Remittances Comparison</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional Remittances</th>
+                            <th>Crypto Remittances</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Transfer Time</strong></td>
+                            <td>3-5 business days</td>
+                            <td>Minutes to hours</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fees</strong></td>
+                            <td>5-10% of transfer amount</td>
+                            <td>0.5-2% of transfer amount</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Availability</strong></td>
+                            <td>Business hours only</td>
+                            <td>24/7/365</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Requirements</strong></td>
+                            <td>Bank accounts, physical locations</td>
+                            <td>Smartphone and internet</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transparency</strong></td>
+                            <td>Limited tracking</td>
+                            <td>Full blockchain visibility</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Real-World Impact</h3>
+                <div class="use-cases-grid">
+                    <div class="use-case">
+                        <h5>👨‍👩‍👧‍👦 Family Support</h5>
+                        <p>Migrant workers sending money to families in their home countries with minimal fees</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🏢 Business Payments</h5>
+                        <p>International business payments and supplier transactions without banking delays</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🚨 Emergency Transfers</h5>
+                        <p>Emergency fund transfers during natural disasters or political instability</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>💼 Freelance Payments</h5>
+                        <p>Facilitating international freelance and gig economy payments instantly</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🏦 Banking the Unbanked</h5>
+                        <p>Supporting family members in countries with limited banking infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Impact:</strong> The World Bank estimates that reducing remittance costs by 5% could save migrants $16 billion annually - cryptocurrency is making this possible.
+                </div>
+            </section>
+
+            <section id="defi" class="section">
+                <h2>DeFi Protocols: Decentralized Finance</h2>
+
+                <p>Decentralized Finance (DeFi) protocols are blockchain-based financial services that operate without traditional intermediaries like banks. These protocols enable users to earn yield, lend assets, and borrow funds through smart contracts, creating a permissionless and globally accessible financial system.</p>
+
+                <div class="key-points">
+                    <h4>Core Advantages of DeFi</h4>
+                    <ul>
+                        <li>Permissionless access - no credit checks, geographic restrictions, or minimum account requirements</li>
+                        <li>Transparent and auditable smart contracts that execute automatically</li>
+                        <li>Composability allowing protocols to integrate and build upon each other</li>
+                        <li>Higher potential yields compared to traditional savings accounts</li>
+                        <li>Global liquidity pools that operate 24/7 without human intervention</li>
+                    </ul>
+                </div>
+
+                <div class="sub-section">
+                    <h4>💰 Yield Farming & Staking</h4>
+                    <p>Yield farming involves providing liquidity to DeFi protocols in exchange for rewards, while staking involves locking tokens to support network security and governance in exchange for staking rewards. Both strategies allow crypto holders to earn passive income on their assets.</p>
+                    
+                    <div class="benefits-list">
+                        <h5>Key Benefits:</h5>
+                        <ul>
+                            <li>Generate passive income from idle cryptocurrency holdings</li>
+                            <li>Compound returns through automatic reward reinvestment</li>
+                            <li>Support network security and decentralization through staking</li>
+                            <li>Access to governance rights and protocol decision-making</li>
+                            <li>Flexibility to move funds between different yield opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <h4>🏦 Lending</h4>
+                    <p>DeFi lending protocols allow users to deposit their cryptocurrency assets into liquidity pools, where other users can borrow them. Lenders earn interest on their deposits, with rates determined by supply and demand dynamics. Smart contracts automatically handle all loan terms and interest calculations.</p>
+                    
+                    <div class="benefits-list">
+                        <h5>Key Benefits:</h5>
+                        <ul>
+                            <li>Earn competitive interest rates on deposited cryptocurrency</li>
+                            <li>Maintain liquidity with the ability to withdraw funds when available</li>
+                            <li>Diversify income streams beyond traditional investment returns</li>
+                            <li>Support the broader DeFi ecosystem by providing necessary liquidity</li>
+                            <li>Access to variable and fixed-rate lending options</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <h4>💳 Borrowing</h4>
+                    <p>DeFi borrowing enables users to take loans against their cryptocurrency collateral without selling their assets. Borrowers can access liquidity for various purposes while maintaining exposure to their collateral's potential appreciation. Most DeFi loans are overcollateralized to manage risk.</p>
+                    
+                    <div class="benefits-list">
+                        <h5>Key Benefits:</h5>
+                        <ul>
+                            <li>Access liquidity without selling appreciated cryptocurrency assets</li>
+                            <li>Maintain long-term investment positions while accessing short-term funds</li>
+                            <li>No credit checks or lengthy approval processes required</li>
+                            <li>Flexible repayment terms based on protocol parameters</li>
+                            <li>Leverage positions to potentially amplify investment returns</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>DeFi Use Cases</h3>
+                <div class="use-cases-grid">
+                    <div class="use-case">
+                        <h5>📈 Passive Income</h5>
+                        <p>Earning passive income on cryptocurrency holdings through yield farming</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🔒 Collateralized Loans</h5>
+                        <p>Accessing loans without selling crypto assets (using them as collateral)</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>💧 Liquidity Mining</h5>
+                        <p>Providing liquidity to trading pairs and earning transaction fees</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🗳️ Governance</h5>
+                        <p>Participating in governance of decentralized protocols through token voting</p>
+                    </div>
+                    <div class="use-case">
+                        <h5>🎯 Portfolio Strategies</h5>
+                        <p>Creating diversified investment strategies through automated market makers</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Risk Warning:</strong> DeFi protocols involve smart contract risks, impermanent loss, and other complexities. Always research thoroughly and never invest more than you can afford to lose.
+                </div>
+            </section>
+
+            <section id="custody" class="section">
+                <h2>Self-Custody: Be Your Own Bank</h2>
+
+                <h3>What is Self-Custody?</h3>
+                <p>Self-custody means you control your own cryptocurrency private keys, giving you complete ownership and control over your digital assets. This is fundamentally different from traditional banking where the bank holds your money.</p>
+
+                <div class="interactive-demo">
+                    <h4>Interactive Demo: Custody Types</h4>
+                    <div class="demo-buttons">
+                        <button class="demo-button active" onclick="showCustodyDemo('self')">Self-Custody</button>
+                        <button class="demo-button" onclick="showCustodyDemo('exchange')">Exchange Custody</button>
+                        <button class="demo-button" onclick="showCustodyDemo('comparison')">Compare Both</button>
+                    </div>
+                    <div class="demo-content" id="custody-demo">
+                        <strong>Self-Custody:</strong> You hold your private keys and have complete control over your funds. Like having cash in your own safe - only you can access it.
+                    </div>
+                </div>
+
+                <h3>Types of Wallets</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>🔥 Hot Wallets</h4>
+                        <p>Connected to the internet. Convenient for frequent transactions but more vulnerable to hacking. Examples: mobile apps, desktop software.</p>
+                    </div>
+                    <div class="card">
+                        <h4>❄️ Cold Wallets</h4>
+                        <p>Offline storage. Much more secure but less convenient. Examples: hardware wallets, paper wallets.</p>
+                    </div>
+                    <div class="card">
+                        <h4>📱 Mobile Wallets</h4>
+                        <p>Apps on your phone. Good balance of security and convenience for everyday use. Popular options include Trust Wallet, Exodus.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🔌 Hardware Wallets</h4>
+                        <p>Physical devices that store keys offline. Considered the gold standard for security. Popular brands: Ledger, Trezor.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Important:</strong> With self-custody comes responsibility. If you lose your private keys or recovery phrase, your funds are gone forever. Always backup your recovery phrase securely!
+                </div>
+            </section>
+
+            <section id="exchanges" class="section">
+                <h2>Exchanges: Centralized vs Decentralized</h2>
+
+                <h3>Understanding the Difference</h3>
+                <p>Cryptocurrency exchanges are platforms where you can buy, sell, and trade cryptocurrencies. There are two main types, each with distinct advantages and risks.</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Centralized Exchanges (CEX)</th>
+                            <th>Decentralized Exchanges (DEX)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Control</strong></td>
+                            <td>Exchange controls your funds</td>
+                            <td>You control your funds</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Custody</strong></td>
+                            <td>Exchange custody</td>
+                            <td>Self-custody</td>
+                        </tr>
+                        <tr>
+                            <td><strong>User Experience</strong></td>
+                            <td>User-friendly, familiar</td>
+                            <td>More complex, technical</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Liquidity</strong></td>
+                            <td>Usually higher</td>
+                            <td>Can be lower</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fees</strong></td>
+                            <td>Trading fees + withdrawal fees</td>
+                            <td>Network fees + swap fees</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security Risk</strong></td>
+                            <td>Exchange can be hacked</td>
+                            <td>Smart contract risks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Regulation</strong></td>
+                            <td>Regulated, KYC required</td>
+                            <td>Often unregulated</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Examples</strong></td>
+                            <td>Coinbase, Binance, Kraken</td>
+                            <td>Uniswap, SushiSwap, PancakeSwap</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Centralized Exchanges (CEX)</h3>
+                <p>These are traditional-style exchanges run by companies. They're easier to use and often have better customer support, but you don't control your private keys while your funds are on the exchange.</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>✅ Advantages</h4>
+                        <p>Easy to use, high liquidity, customer support, fiat on/off ramps, advanced trading features</p>
+                    </div>
+                    <div class="card">
+                        <h4>❌ Disadvantages</h4>
+                        <p>Custodial risk, single point of failure, requires KYC, can freeze accounts, withdrawal limits</p>
+                    </div>
+                </div>
+
+                <h3>Decentralized Exchanges (DEX)</h3>
+                <p>DEXs operate on blockchain networks using smart contracts. You trade directly from your wallet, maintaining control of your private keys throughout the process.</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>✅ Advantages</h4>
+                        <p>Non-custodial, permissionless, censorship-resistant, privacy-focused, global access</p>
+                    </div>
+                    <div class="card">
+                        <h4>❌ Disadvantages</h4>
+                        <p>More complex to use, potential smart contract bugs, less liquidity for some pairs, higher gas fees</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Best Practice:</strong> Many experienced users combine both - using CEX for fiat conversion and DEX for trading while maintaining self-custody.
+                </div>
+            </section>
+
+            <section id="security" class="section">
+                <h2>Security Best Practices</h2>
+
+                <h3>Protecting Your Assets</h3>
+                <p>Security is paramount in cryptocurrency. Unlike traditional banks, there's no customer service to call if something goes wrong. Follow these essential practices to keep your assets safe.</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>🔐 Strong Passwords</h4>
+                        <p>Use unique, complex passwords for all accounts. Consider using a password manager to generate and store them securely.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🛡️ Two-Factor Authentication</h4>
+                        <p>Enable 2FA on all exchange accounts. Use authenticator apps rather than SMS when possible for better security.</p>
+                    </div>
+                    <div class="card">
+                        <h4>📝 Backup Recovery Phrases</h4>
+                        <p>Write down your seed phrases on paper and store them securely offline. Never store them digitally or share them with anyone.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎣 Avoid Phishing</h4>
+                        <p>Always double-check URLs and never click links in emails. Bookmark official exchange websites and use them directly.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Remember:</strong> In cryptocurrency, you are your own bank. This means you're also your own security team. Take time to learn and implement proper security measures.
+                </div>
+
+                <h3>Dollar-Cost Averaging (DCA)</h3>
+                <p>A smart investment strategy where you regularly purchase a fixed dollar amount of cryptocurrency regardless of price. This helps reduce the impact of volatility over time.</p>
+
+                <h3>Never Invest More Than You Can Afford to Lose</h3>
+                <p>Cryptocurrency markets are highly volatile. Only invest money you can afford to lose completely. Start small as you learn and gradually increase your involvement as you become more comfortable.</p>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Crypto Academy. Educational content for learning purposes. Always do your own research before making investment decisions.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.color = '#333';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.style.color = 'white';
+            }
+        });
+
+        // Interactive custody demo
+        function showCustodyDemo(type) {
+            const content = document.getElementById('custody-demo');
+            const buttons = document.querySelectorAll('.demo-button');
+            
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            switch(type) {
+                case 'self':
+                    content.innerHTML = '<strong>Self-Custody:</strong> You hold your private keys and have complete control over your funds. Like having cash in your own safe - only you can access it. <br><br><em>Pros:</em> Full control, no counterparty risk<br><em>Cons:</em> Full responsibility for security';
+                    break;
+                case 'exchange':
+                    content.innerHTML = '<strong>Exchange Custody:</strong> The exchange holds your private keys and manages your funds. Like having money in a bank - convenient but you trust them to keep it safe. <br><br><em>Pros:</em> Convenient, customer support<br><em>Cons:</em> Exchange risk, potential freezing';
+                    break;
+                case 'comparison':
+                    content.innerHTML = '<strong>Comparison:</strong><br>• Self-custody = Maximum control + Maximum responsibility<br>• Exchange custody = Convenience + Trust in third party<br><br>Many users use both: exchanges for trading, self-custody for long-term storage.';
+                    break;
+            }
+        }
+
+        // Interactive stablecoin demo
+        function showStablecoinDemo(type) {
+            const content = document.getElementById('stablecoin-demo');
+            const buttons = document.querySelectorAll('.demo-button');
+            
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            switch(type) {
+                case 'fiat':
+                    content.innerHTML = '<strong>Fiat-Backed Stablecoins:</strong> Backed 1:1 by traditional currencies like USD. Examples: USDC, USDT. Most stable but requires trust in the issuing company\'s reserves. <br><br><em>Pros:</em> Simple, stable<br><em>Cons:</em> Centralized, requires trust';
+                    break;
+                case 'crypto':
+                    content.innerHTML = '<strong>Crypto-Backed Stablecoins:</strong> Backed by cryptocurrency collateral, often over-collateralized. Examples: DAI, sUSD. More decentralized but can be affected by crypto volatility. <br><br><em>Pros:</em> More decentralized, transparent<br><em>Cons:</em> Complex, affected by crypto volatility';
+                    break;
+                case 'algorithmic':
+                    content.innerHTML = '<strong>Algorithmic Stablecoins:</strong> Use smart contracts and algorithms to maintain price stability without backing assets. Examples: TerraUSD (failed), Frax. Most experimental and risky. <br><br><em>Pros:</em> Fully decentralized, scalable<br><em>Cons:</em> High risk, many have failed';
+                    break;
+            }
+        }
+
+        // Add fade-in animation to elements as they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .section h2, .comparison-table, .use-case, .sub-section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add hover effects to use cases
+        document.querySelectorAll('.use-case').forEach(useCase => {
+            useCase.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            });
+            
+            useCase.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
